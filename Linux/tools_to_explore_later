@@ -1,0 +1,23 @@
+sudo apt install meld # to compare files or folders
+
+#Record screen actions as gif (for documentation etc.)
+sudo add-apt-repository ppa:peek-developers/stable
+sudo apt install peek
+
+# Mattermost (free version of Slack)
+https://docs.mattermost.com/install/desktop-app-install.html
+untar into Software
+cd into untarred (after changing name) and run ./create_desktop_file.sh
+mv Mattermost.desktop ~/.local/share/applications/
+
+MODULES 
+
+sudo apt-get install environment-modules
+
+#Default modules are in /usr/share/modules/modulefiles
+#bashrc should contain the following line:
+source /etc/profile.d/modules.sh
+
+
+#Batch jobs cannot load modules automatically. Add this to sbatch script:
+source /etc/profile.d/modules.sh
