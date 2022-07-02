@@ -1,8 +1,5 @@
 # Get the latest stable Ubuntu here  https://ubuntu.com/download/desktop
 
-# Software & Updates -> Other Software -> Canonical partners
-# (to have access to more packages)
-
 # Settings -> Keyboard Shortcuts -> at the bottom add custom
 # Kill processes xkill Ctrl+k
 # Now by clicking with an x on any window you can kill the process
@@ -22,7 +19,7 @@ sudo mkswap /swapfile-1 # format file with the swapfile system
 sudo swapon /swapfile-1 # enable the swap file
 free -m # check that there is additional swap memory
 # Now tell the system this is a swap file on load.
-sudo vim /etc/fstab 
+sudo vi /etc/fstab 
 # Copy the last line (and rename the first entry, i.e. file name, to swap-1)
 
 #################################################
@@ -38,6 +35,8 @@ sudo apt install vim # better text editor
 
 sudo apt install htop # better version of top
 
+sudo apt install p7zip-full # to uncompress .7z files among others
+
 sudo apt install git
 curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo gpg --dearmor -o /usr/share/keyrings/githubcli-archive-keyring.gpg
 echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | sudo tee /etc/apt/sources.list.d/github-cli.list > /dev/null
@@ -48,11 +47,26 @@ gh auth login
 
 # Set up git config
 
+###############################
+# developer tools
+sudo apt install build-essential # GNU debugger, g++/GNU compilers, dpkg-dev, GCC and make
+sudo apt install clang-format # C++ code formatter
+sudo apt install xsltproc # XSLT stylesheets for XML documents
+
 ######################################
 # Install Software
-# 1. VS Code https://code.visualstudio.com/docs/?dv=linux64_deb
-sudo apt install ./code
-Extensions: python, bracket pair colorizer, C++, Modern Fortran, ToDo Tree
+# 0. Anaconda https://docs.conda.io/projects/conda/en/latest/user-guide/install/download.html
+bash *conda*.sh
+conda update conda
+conda install numpy sympy scipy 
+conda create --name py2 python=2
+conda activate py2
+conda install numpy sympy scipy 
+
+
+# 1. VS Code 
+sudo apt install code
+Extensions: python, C++, Modern Fortran, Remote - SSH, Live Server, GitLens
 
 # 2. Thunderbird:
 sudo snap install thunderbird
@@ -61,17 +75,18 @@ sudo snap install thunderbird
 sudo snap install vlc
 
 # 4. Dropbox https://www.dropbox.com/install 
-sudo apt install ~/Downloads/dropbox
+sudo apt install ~/Downloads/dropbox*
 
 # 5. Zoom https://zoom.us/download
-sudo apt install ~/Downloads/zoom
+sudo snap install zoom-client
 
-# 6. Slack https://slack.com/downloads/linux
-sudo apt install ~/Downloads/slack
+# 6. Slack 
+sudo snap install slack
 
-# 7. Mendeley Desktop: https://www.mendeley.com/download-mendeley-desktop-legacy#download
-#Requires python2 
-sudo apt install ./mendeleydesktop_1.19.8-stable_amd64.deb
+# 7. Mendeley Reference manager: https://www.mendeley.com/download-reference-manager/linux
+chmod u+x *mendeley*.AppImage
+./*mendeley*.AppImage --appimage-extract
+mv squashfs-root Mendeley-reference-manager
 
 # 8. CLion (download as snap) - free for students
 sudo snap install clion --classic
