@@ -37,6 +37,9 @@ sudo apt install htop # better version of top
 
 sudo apt install p7zip-full # to uncompress .7z files among others
 
+sudo apt install w3m w3m-img # command line browser (and its inline image supprot)
+# SHIFT+q to quit, SHIFT+b to go back, shift+t for new tab, shift+u for new url
+
 sudo apt install git
 curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo gpg --dearmor -o /usr/share/keyrings/githubcli-archive-keyring.gpg
 echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | sudo tee /etc/apt/sources.list.d/github-cli.list > /dev/null
@@ -67,11 +70,11 @@ echo "# Intel libraries (compiler, MKL etc.)" >> ~/.bashrc; echo "source /opt/in
 bash *conda*.sh
 conda update conda
 conda config --add channels conda-forge
-conda install numpy sympy scipy fortls fpm
+conda install numpy sympy scipy fortls fpm matplotlib pandas
 # python packages and last 2 for fortran
 conda create --name py2 python=2
 conda activate py2
-conda install numpy sympy scipy 
+conda install numpy sympy scipy matplotlib
 
 
 # 1. VS Code 
